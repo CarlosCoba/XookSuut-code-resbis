@@ -16,6 +16,7 @@ from kinematic_centre_vsys import KC
 from CBAR import colorbar as cb
 
 from isolated_pixels import filter_isolated_cells
+from template import params
 
 from write_table import write
 
@@ -194,7 +195,7 @@ def rotcur(galaxy, vel_map2D,evel_map,SN,VSYS,PA,INC,X0,Y0,n_it =5, pixel_scale=
 
 
 	from save_fits_1D_model import save_model
-	s = save_model(galaxy,vmode,R,Vrot,e_Vrot,Vrad,e_Vrad,Vtan,e_Vtan,PA,INC,XC,YC,VSYS,THETA,PA_BAR_MAJOR,PA_BAR_MINOR,save=save_file)
+	s = save_model(galaxy,vmode,R,Vrot,e_Vrot,Vrad,e_Vrad,Vtan,e_Vtan,PA,INC,XC,YC,VSYS,THETA,PA_BAR_MAJOR,PA_BAR_MINOR,errors_fit,save=save_file)
 
 
 	from save_fits_2D_model import save_vlos_model
