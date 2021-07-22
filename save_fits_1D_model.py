@@ -3,7 +3,7 @@ from astropy.io import fits
 
 
 
-def save_model(galaxy,vmode,R,Vrot,e_Vrot,Vrad,e_Vrad,Vtan,e_Vtan,PA,INC,XC,YC,VSYS,THETA,PA_BAR_MAJOR,PA_BAR_MINOR,save = 1):
+def save_model(galaxy,vmode,R,Vrot,e_Vrot,Vrad,e_Vrad,Vtan,e_Vtan,PA,INC,XC,YC,VSYS,THETA,PA_BAR_MAJOR,PA_BAR_MINOR,errors_fit,save = 1):
 	#m = len(MODELS)
 	n = len(Vrot)
 
@@ -47,6 +47,9 @@ def save_model(galaxy,vmode,R,Vrot,e_Vrot,Vrad,e_Vrad,Vtan,e_Vtan,PA,INC,XC,YC,V
 
 
 	if save == 1:
+
+		e_Vrot,e_Vrad,e_PA,e_INC,XC_e,YC_e,e_Vsys,e_theta,e_Vtan = errors_fit
+
 		hdu = fits.PrimaryHDU(data)
 
 		if vmode == "circular":
@@ -70,15 +73,20 @@ def save_model(galaxy,vmode,R,Vrot,e_Vrot,Vrad,e_Vrad,Vtan,e_Vtan,PA,INC,XC,YC,V
 
 
 		hdu.header['PA'] = PA
+		hdu.header['e_PA'] = e_PA
 		hdu.header['INC'] = INC
+		hdu.header['e_INC'] = e_INC
 		hdu.header['VSYS'] = VSYS
+		hdu.header['e_VSYS'] = e_Vsys
 		hdu.header['XC'] = XC
+		hdu.header['e_XC'] = XC_e
 		hdu.header['YC'] = YC
+		hdu.header['e_YC'] = YC_e
 
-		if vmode == "bisymmetric" or vmode == "resbis":
+		if vmode == "bisymmetric" or vmode == "resbis" or vmode == "twostep":
 			hdu.header['HIERARCH THETA-BAR'] = THETA
+			hdu.header['HIERARCH e_THETA-BAR'] = e_theta
 			hdu.header['HIERARCH PA-BAR-MAJOR'] = PA_BAR_MAJOR
 			hdu.header['HIERARCH PA-BAR-MINOR'] = PA_BAR_MINOR
 		
 		hdu.writeto("./models/%s.%s.1D_model.fits"%(galaxy,vmode),overwrite=True)
-
