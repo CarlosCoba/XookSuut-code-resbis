@@ -1,4 +1,4 @@
-#! /usr/bin/python3
+#!/usr/bin/env python3
 import sys
 nargs=len(sys.argv)
 from initialize_XS import rotcur
@@ -6,7 +6,7 @@ from initialize_XS import rotcur
 """
 #################################################################################
 # 				The XookSuut-code.				#
-#				version 21.04.11				#
+#				version 21.07.28				#
 # 				C. Lopez-Coba					#
 #################################################################################
 
