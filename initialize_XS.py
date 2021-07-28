@@ -188,7 +188,7 @@ def rotcur(galaxy, vel_map2D,evel_map,SN,VSYS,PA,INC,X0,Y0,n_it =5, pixel_scale=
 
 	save_file = save_plots
 
-
+	vel_map = vel_ha
 	from plot_models import plot_kin_models
 	plot_kin_models(galaxy,vmode,vel_ha,R,Vrot,e_Vrot,Vrad,e_Vrad,Vtan,e_Vtan, VSYS, VLOS_2D_MODEL, ext,plot = 0, save = save_file)
 
@@ -199,7 +199,7 @@ def rotcur(galaxy, vel_map2D,evel_map,SN,VSYS,PA,INC,X0,Y0,n_it =5, pixel_scale=
 
 	from save_fits_2D_model import save_vlos_model
 	if vmode == "bisymmetric" or vmode == "resbis" or vmode == "twostep":
-		save_vlos_model(galaxy,vmode,vel_map,evel_map_copy,VLOS_2D_MODEL,KIN_2D_MODELS,PA,INC,XC,YC,VSYS,save = save_file,theta = THETA, phi_bar_major = PA_BAR_MAJOR, phi_bar_minor = PA_BAR_MINOR)
+		save_vlos_model(galaxy,vmode,vel_ha,evel_map_copy,VLOS_2D_MODEL,KIN_2D_MODELS,PA,INC,XC,YC,VSYS,save = save_file,theta = THETA, phi_bar_major = PA_BAR_MAJOR, phi_bar_minor = PA_BAR_MINOR)
 	else:
 		save_vlos_model(galaxy,vmode,vel_map,evel_map_copy,VLOS_2D_MODEL,KIN_2D_MODELS,PA,INC,XC,YC,VSYS,save = save_file)
 
