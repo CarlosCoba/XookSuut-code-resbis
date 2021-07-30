@@ -1,6 +1,6 @@
 import numpy as np
 from astropy.io import fits
-
+from phi_bar_sky import error_pa_bar_sky
 
 
 def save_model(galaxy,vmode,R,Vrot,e_Vrot,Vrad,e_Vrad,Vtan,e_Vtan,PA,INC,XC,YC,VSYS,THETA,PA_BAR_MAJOR,PA_BAR_MINOR,errors_fit,save = 1):
@@ -84,9 +84,14 @@ def save_model(galaxy,vmode,R,Vrot,e_Vrot,Vrad,e_Vrad,Vtan,e_Vtan,PA,INC,XC,YC,V
 		hdu.header['e_YC'] = YC_e
 
 		if vmode == "bisymmetric" or vmode == "resbis" or vmode == "twostep":
-			hdu.header['HIERARCH THETA-BAR'] = THETA
-			hdu.header['HIERARCH e_THETA-BAR'] = e_theta
-			hdu.header['HIERARCH PA-BAR-MAJOR'] = PA_BAR_MAJOR
-			hdu.header['HIERARCH PA-BAR-MINOR'] = PA_BAR_MINOR
+			hdu.header['HIERARCH PHI_BAR'] = THETA
+			hdu.header['HIERARCH e_PHI_BAR'] = e_theta
+			hdu.header['HIERARCH PA_BAR_MAJOR'] = PA_BAR_MAJOR
+			hdu.header['HIERARCH e_PA_BAR_MAJOR'] = error_pa_bar_sky(PA,INC,THETA,e_PA,e_INC,e_theta)
+			hdu.header['HIERARCH PA_BAR_MINOR'] = PA_BAR_MINOR
+			hdu.header['HIERARCH e_PA_BAR_MINOR'] = error_pa_bar_sky(PA,INC,THETA-90,e_PA,e_INC,e_theta)
 		
 		hdu.writeto("./models/%s.%s.1D_model.fits"%(galaxy,vmode),overwrite=True)
+
+
+
