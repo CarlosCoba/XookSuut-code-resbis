@@ -7,19 +7,18 @@ mkdir ~/XS-code
 (2) copy all files in this new folder
 
 (3) Make the file executable:
-chmod +x XookSuut.py
-
+chmod +x XookSuut-res.py
 
 (4) Edit  .bashrc:
 gedit ~/.bashrc
 
-Add the folowing line:
+Add the folowing line. In case you put the code in the home directory, this would be:
 export PATH="$PATH:$HOME/XS-code"
 
 Refresh the bash file:
 source ~/.bashrc
 
-Try it. Go to any folder and type  XookSuut
+Try it. Go to any folder and type  XookSuut-res.py
 
 you must get the following :
 
@@ -31,7 +30,7 @@ USE: XookSuut-res.py object vel_map [evel_map] SN [VSYS] PA INC X0 Y0 [N_it=5] [
 #################################################################################
 # 				  XookSuut      				#
 # 				  (res) 	     				#
-#				version 21.07.17				#
+#				version 28.07.17				#
 # 				C. Lopez-Coba					#
 #################################################################################
 
@@ -149,7 +148,7 @@ matplotlib
 astropy
 lmfit
 numdifftools
-
+pip install radio-beam
 
 #
 # RUNNING THE CODE:
@@ -158,5 +157,4 @@ numdifftools
 # EXAMPLE
 #
 
-XookSuut-res.py test_galaxy test.fits ""  20 "" 200 50 27 27 5 1 1 1 1 1 1 1 2.5 "" 3 46 2/3. 3,20 bisymmetric 1 0 test "" 5 1e4 leastsq 0 ""
-
+XookSuut-res.py test_galaxy test.fits ""  20 "" 200 50 27 27 5 1 1 1 1 1 1 1 2.5 "" 3 46 2/3. 3,20 bisymmetric 1 1 test "" 5 1e4 leastsq 1 ""
