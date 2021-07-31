@@ -22,6 +22,8 @@ def save_vlos_model(galaxy,vmode,vel_map,evel_map,vlos_2D_model, kin_2D_models,P
 		hdu.header['VSYS'] = VSYS
 		hdu.header['XC'] = XC
 		hdu.header['YC'] = YC
+		if vmode == "bisymmetric" or vmode == "resbis" or vmode == "twostep":
+			hdu.header['PHI_BAR'] = theta
 		
 		hdu.writeto("./models/%s.%s.2D_vlos_model.fits"%(galaxy,vmode),overwrite=True)
 
@@ -142,9 +144,9 @@ def save_vlos_model(galaxy,vmode,vel_map,evel_map,vlos_2D_model, kin_2D_models,P
 			hdu.header['VSYS'] = VSYS
 			hdu.header['XC'] = XC
 			hdu.header['YC'] = YC
-			hdu.header['THETA_BAR'] = theta
-			hdu.header['PA_SKY_BAR_MAJOR'] = phi_bar_major
-			hdu.header['PA_SKY_BAR_MINOR'] = phi_bar_minor
+			hdu.header['PHI_BAR'] = theta
+			hdu.header['PA_BAR_MAJOR'] = phi_bar_major
+			hdu.header['PA_BAR_MINOR'] = phi_bar_minor
 
 			
 			hdu.writeto("./models/%s.%s.2D_rad_model.fits"%(galaxy,vmode),overwrite=True)
@@ -161,12 +163,11 @@ def save_vlos_model(galaxy,vmode,vel_map,evel_map,vlos_2D_model, kin_2D_models,P
 			hdu.header['VSYS'] = VSYS
 			hdu.header['XC'] = XC
 			hdu.header['YC'] = YC
-			hdu.header['THETA_BAR'] = theta
-			hdu.header['PA_SKY_BAR_MAJOR'] = phi_bar_major
-			hdu.header['PA_SKY_BAR_MINOR'] = phi_bar_minor
+			hdu.header['PHI_BAR'] = theta
+			hdu.header['PA_BAR_MAJOR'] = phi_bar_major
+			hdu.header['PA_BAR_MINOR'] = phi_bar_minor
 			
 			hdu.writeto("./models/%s.%s.2D_tan_model.fits"%(galaxy,vmode),overwrite=True)
 
 
 	else: pass
-
