@@ -49,13 +49,24 @@ def tab_mod_vels(rings, vel, evel, pa,inc,x0,y0,vsys,theta_b,delta,pixel_scale,v
 
 						if vmode == "radial":
 
+							if ring >=  r_bar_min and ring <= r_bar_max:
+								# Create radial model
+								v_rot_k,v_rad_k,v_tan_k = M_tab(pa,inc,x0,y0,theta_b,ring, delta,index, shape, vel-vsys, evel, pixel_scale=pixel_scale,vmode = vmode)
 
-							v_rot_k,v_rad_k,v_tan_k = M_tab(pa,inc,x0,y0,theta_b,ring, delta,index, shape, vel-vsys, evel, pixel_scale=pixel_scale,vmode = vmode)
+								vrot_tab = np.append(vrot_tab,v_rot_k)
+								vrad_tab = np.append(vrad_tab,v_rad_k)
+								vtan_tab = 0
+								R_pos = np.append(R_pos,ring)
+							else:
+								# Create ciruclar model
+								v_rot_k,v_rad_k,v_tan_k = M_tab(pa,inc,x0,y0,theta_b,ring, delta,index, shape, vel-vsys, evel, pixel_scale=pixel_scale,vmode = "circular")
 
-							vrot_tab = np.append(vrot_tab,v_rot_k)
-							vrad_tab = np.append(vrad_tab,v_rad_k)
-							vtan_tab = 0
-							R_pos = np.append(R_pos,ring)
+								vrot_tab = np.append(vrot_tab,v_rot_k)
+								vrad_tab = np.append(vrad_tab,0)
+								vtan_tab = np.append(vtan_tab,0)
+								R_pos = np.append(R_pos,ring)
+
+
 
 
 
