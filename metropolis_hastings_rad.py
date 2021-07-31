@@ -392,17 +392,13 @@ def bayesian_mcmc(galaxy, shape, vel_map, e_vel_map, guess, vmode, config, rings
 	ax_pa.text(n_circ/2.,0.05,"$\mathrm{step number}$",fontsize = 4, transform = ax_pa.transAxes, zorder = 1e2)
 
 
-	if n_circ != n_noncirc:
-		for i in range(n_circ - n_noncirc):
+	#if n_circ != n_noncirc:
+	for i in range(n_circ - n_noncirc):
 			globals()['ax%s' % i] = axes[n_circ+n_noncirc+i]
 			globals()['ax%s' % i].remove()
 
-			globals()['ax1%s' % i] = axes[2*n_circ+n_noncirc+i]
-			globals()['ax1%s' % i].remove()
 
-
-	used_axis = nrows*ncols - (2*n_circ + 5)	
-
+	used_axis = nrows*ncols - (2*n_circ + 5)
 	if used_axis < nrows*ncols:	
 		for i in range(used_axis):
 			globals()['ax_remove%s' % i] = axes[2*n_circ+5+i]
@@ -510,7 +506,6 @@ def bayesian_mcmc(galaxy, shape, vel_map, e_vel_map, guess, vmode, config, rings
 	Std_errors = eVrot,eVrad,epa,einc,ex0,ey0,eVsys,0,eVrot*0
 
 	return chain,vlos_2D_model, kin_2D_models, Vrot, Vrad, Vsys,  pa, inc , x0, y0, Vrot*0, 0, Std_errors
-
 
 
 
