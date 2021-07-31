@@ -64,7 +64,7 @@ frac_pixel = 	2/3.		Fraction of total pixels within a ring required to compute t
 				then 100% of the pixels within a ring are required to be filled with data to compute the tabulated model.
 
 r_bar_min,max= 	2.5,40		Maximum and minimum length of the bisymmetric perturbation. If only a value is passed then it'll be considered as r_bar_max.
-model	= 	circular	The different kinematic models. You must choose between: "circular" motion (circular), "radial" flows (radial), or "bisymmetric" (oval distortion).
+model	= 	circular	The different kinematic models. You must choose between: "circular" motion (circular), "radial" flows (radial), "bisymmetric" 					(oval distortion), "twostep" (forces circular + bisymmetric) and "resbis" (create a bisymmetric model with a residual map).
 				This new version allows fitting a bisymmetric model to the residuals from the circular model. This is the "resbis" mode. vel_map is this case 
 				is the residual map. In addtion it is included the "twostep" mode. This mode forces a "circular" mode + "bisymmetric" mode during the fitting. 
 errors	=	1		Boolean. If you want to compute errors on the derived parameters via Metropolis-Hastings analysis. Otherwise it will use the chi-square analysis (faster).
@@ -157,4 +157,4 @@ pip install radio-beam
 # EXAMPLE
 #
 
-XookSuut-res.py test_galaxy test.fits ""  20 "" 200 50 27 27 5 1 1 1 1 1 1 1 2.5 "" 3 46 2/3. 3,20 bisymmetric 1 1 test "" 5 1e4 leastsq 1 ""
+XookSuut-res.py test_galaxy test.fits ""  20 "" 200 50 27 27 5 1 1 1 1 1 1 1 2.5 "" 3 46 2/3. 3,20 bisymmetric 1 1 test "" 5 1e4 leastsq 0 ""
