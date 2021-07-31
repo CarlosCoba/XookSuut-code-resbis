@@ -23,7 +23,7 @@ def rad_mod(galaxy, vel, evel, guess0, vary, n_it, rstart, rfinal, ring_space, f
 		vmode = "radial"
 		[ny,nx] = vel.shape
 		shape = [ny,nx]
-
+		r_bar_min, r_bar_max = bar_min_max
 
 
 
@@ -46,7 +46,7 @@ def rad_mod(galaxy, vel, evel, guess0, vary, n_it, rstart, rfinal, ring_space, f
 		vrot_tab_it, vrad_tab_it, vtan_tab_it = np.zeros(nrings,), np.zeros(nrings,), np.zeros(nrings,)
 		for it in np.arange(n_it):
 
-			vrot_tab, vrad_tab, vtan_tab, R_pos = tab_mod_vels(rings,vel, evel, pa0,inc0,x0,y0,vsys0,theta_b,delta,pixel_scale,vmode,shape,frac_pixel,0,0)
+			vrot_tab, vrad_tab, vtan_tab, R_pos = tab_mod_vels(rings,vel, evel, pa0,inc0,x0,y0,vsys0,theta_b,delta,pixel_scale,vmode,shape,frac_pixel,r_bar_min, r_bar_max)
 
 			vrot_tab[abs(vrot_tab) > 400] = np.nanmedian(vrot_tab) 	
 			guess = [vrot_tab,vrad_tab,pa0,inc0,x0,y0,vsys0, vtan_tab,theta_b]
@@ -100,7 +100,6 @@ def rad_mod(galaxy, vel, evel, guess0, vary, n_it, rstart, rfinal, ring_space, f
 		Vrad = np.array(Vrad)
 
 		return PA,INC,XC,YC,VSYS,0,Rings,Vrot,Vrad,0*Vrot,best_vlos_2D_model,best_kin_2D_models,chisq_global,std_errors
-
 
 
 
