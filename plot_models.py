@@ -58,9 +58,9 @@ def plot_kin_models(galaxy,vmode,vel_ha,R,Vrot,eVrot,Vrad,eVrad,Vtan,eVtan,VSYS,
 		ax.contour(z, levels = [i*50 for i in np.arange(-N,N+1)], colors = "k", alpha = 1, zorder = 1e3, extent = ext, linewidths = 0.6)
 		ax1.contour(z, levels = [i*50 for i in np.arange(-N,N+1)], colors = "k", alpha = 1, zorder = 1e3, extent = ext, linewidths = 0.6)
 		ax2.contour(z, levels = [i*50 for i in np.arange(-N,N+1)], colors = "k", alpha = 1, zorder = 1e3, extent = ext, linewidths = 0.6)
-		if np.nanmean(Vtan) < 0 :
-			Vtan = -Vtan
-			Vrad = -Vrad
+		#if np.nanmean(Vtan) < 0 :
+		#	Vtan = -Vtan
+		#	Vrad = -Vrad
 	#"""
 
 	AXIS(ax,tickscolor = "k")
