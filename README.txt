@@ -23,7 +23,7 @@ Try it. Go to any folder and type  XookSuut-res.py
 you must get the following :
 
 
-USE: XookSuut-res.py object vel_map [evel_map] SN [VSYS] PA INC X0 Y0 [N_it=5] [pixel_scale=1] vary_PA[0,1] vary_INC[0,1] vary_XC[0,1] vary_YC[0,1] vary_VSYS[0,1] vary_PHI_bar[0,1] ring_space [Delta] [Rstart=2.5] [Rfinal=40] [frac_pixel=2/3.] [R_bar_min,R_bar_max] [model=cicular,radial,bisymmetric] [save_plots=1] [errors=0] [survey] [config_file] [e_ISM=5] [steps = 1e4] [method = Powell, leastsq] [use_mh = 0] [prefix]
+USE: XookSuut-res.py object vel_map [evel_map] SN [VSYS] PA INC X0 Y0 [N_it=5] [pixel_scale=1] vary_PA[0,1] vary_INC[0,1] vary_XC[0,1] vary_YC[0,1] vary_VSYS[0,1] vary_PHI_bar[0,1] ring_space [Delta] [Rstart=2.5] [Rfinal=40] [frac_pixel=2/3.] [R_bar_min,R_bar_max] [model=cicular,radial,bisymmetric,resbis,twostep] [save_plots=1] [errors=0] [survey] [config_file] [e_ISM=5] [steps = 1e4] [method = Powell, leastsq] [use_mh = 0] [prefix]
 
 
 """
@@ -65,7 +65,7 @@ frac_pixel = 	2/3.		Fraction of total pixels within a ring required to compute t
 
 r_bar_min,max= 	2.5,40		Maximum and minimum length of the bisymmetric perturbation. If only a value is passed then it'll be considered as r_bar_max.
 model	= 	circular	The different kinematic models. You must choose between: "circular" motion (circular), "radial" flows (radial), "bisymmetric" 					(oval distortion), "twostep" (forces circular + bisymmetric) and "resbis" (create a bisymmetric model with a residual map).
-				This new version allows fitting a bisymmetric model to the residuals from the circular model. This is the "resbis" mode. vel_map is this case 
+				This new version allows fitting a bisymmetric model to the residuals from the circular model. This is the "resbis" mode. 
 				is the residual map. In addtion it is included the "twostep" mode. This mode forces a "circular" mode + "bisymmetric" mode during the fitting. 
 errors	=	1		Boolean. If you want to compute errors on the derived parameters via Metropolis-Hastings analysis. Otherwise it will use the chi-square analysis (faster).
 survey =	-		String. If the object belongs to a specific galaxy survey put it here.
