@@ -431,8 +431,12 @@ def fit(shape, vel_map, e_vel_map, guess,vary,vmode,config, rings_pos, ring_spac
 
 		for iy  in range(nrings):
 
+				if vr20[iy] == 0:
+					vary_vrad = False
+
+
 				fit_params.add('Vrot_%i' % (iy),value=vrot0[iy], vary = vary[0], min = -400, max = 400)
-				fit_params.add('Vrad_%i' % (iy), value=vr20[iy], vary = vary[1], min = -200, max = 200)
+				fit_params.add('Vrad_%i' % (iy), value=vr20[iy], vary = vary_vrad, min = -300, max = 300)
 
 		if config == "":
 
@@ -911,7 +915,6 @@ def fit(shape, vel_map, e_vel_map, guess,vary,vmode,config, rings_pos, ring_spac
 
 
 		return vlos_2D_model, kin_2D_models, Vrot, Vrad, Vsys,  pa, inc , x0, y0, Vtan, theta, red_chi, N_free, Std_errors
-
 
 
 
