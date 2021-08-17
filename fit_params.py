@@ -703,7 +703,7 @@ def fit(shape, vel_map, e_vel_map, guess,vary,vmode,config, rings_pos, ring_spac
 		from create_2D_kin_models import bidi_models
 		kin_2D_models = bidi_models(vmode, shape, V_k, pa, inc, x0, y0, Vsys, rings_pos, ring_space = ring_space, pixel_scale = pixel_scale) 
 		##########
-	
+		if np.isfinite(std_theta) == False: std_theta = 0		
 		Std_errors = [std_Vrot,std_Vrad,std_pa, std_inc, std_x0, std_y0, std_Vsys, std_theta, std_Vtan]
 
 
@@ -910,7 +910,7 @@ def fit(shape, vel_map, e_vel_map, guess,vary,vmode,config, rings_pos, ring_spac
 		from create_2D_kin_models import bidi_models
 		kin_2D_models = bidi_models(vmode, shape, V_k, pa, inc, x0, y0, Vsys, rings_pos, ring_space = ring_space, pixel_scale = pixel_scale) 
 		##########
-	
+		if np.isfinite(std_theta) == False: std_theta = 0		
 		Std_errors = [vrot0*0,std_Vrad,std_pa, std_inc, std_x0, std_y0, std_Vsys, std_theta, std_Vtan]
 
 
